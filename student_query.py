@@ -1,4 +1,5 @@
-
+# a built-in Python library that allows you to interact with SQLite databases — 
+# a lightweight, self-contained, serverless SQL database engine.
 import sqlite3
 
 # Connect to (or create) the database
@@ -6,15 +7,6 @@ conn = sqlite3.connect('students.db')
 cursor = conn.cursor()
 
 # Create the students table if it doesn't exist
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS students (
-        student_id INTEGER PRIMARY KEY,
-        name TEXT
-    )
-''')
-
-# Insert sample data
-cursor.execute('INSERT OR IGNORE INTO students (student_id, name) VALUES (?, ?)', (101, 'Omair'))
 
 # Fetch a record with student_id = 101
 student_id = 101
@@ -27,6 +19,6 @@ if record:
 else:
     print("No student found with ID =", student_id)
 
-# Commit changes and close the connection
+# Commit changes if any, and then close the connection
 conn.commit()
 conn.close()
